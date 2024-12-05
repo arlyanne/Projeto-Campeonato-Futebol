@@ -13,8 +13,8 @@
     <h:form id="form">
         <div class="form-container">
             <p:panel header="Listagem de Jogos">
-                 <!-- Mensagens de erro ou sucesso -->
-                 <p:messages id="messages" showDetail="true" closable="true"/>
+                <!-- Mensagens de erro ou sucesso -->
+                <p:messages id="messages" showDetail="true" closable="true"/>
                 
                 <p:dataTable value="#{jogoBean.listaJogos}" var="jogo"
                              emptyMessage="Nenhum jogo cadastrado"
@@ -45,19 +45,20 @@
                     </p:column>
                     
                     <p:column headerText="Ações">
-                        <!-- Botão Editar -->
-                        <p:commandButton value="Editar" icon="ui-icon-pencil" 
-                                         action="#{jogoBean.editarJogo(jogo)}" 
-                                         styleClass="button-spacing"
-                                         update="form:messages form:listagemJogos" 
-                                         process="@this" />
+                        <!-- Botões Editar e Excluir com espaçamento -->
+                        <div class="button-actions">
+                            <p:commandButton value="Editar" icon="ui-icon-pencil" 
+                                             action="#{jogoBean.editarJogo(jogo)}" 
+                                             styleClass="action-button edit-button"
+                                             update="form:messages form:listagemJogos" 
+                                             process="@this" />
                         
-                        <!-- Botão Excluir -->
-                        <p:commandButton value="Excluir" icon="ui-icon-trash" 
-                                         action="#{jogoBean.excluirJogo(jogo)}" 
-                                         styleClass="button-spacing"
-                                         update="form:messages form:listagemJogos" 
-                                         process="@this" />
+                            <p:commandButton value="Excluir" icon="ui-icon-trash" 
+                                             action="#{jogoBean.excluirJogo(jogo)}" 
+                                             styleClass="action-button delete-button"
+                                             update="form:messages form:listagemJogos" 
+                                             process="@this" />
+                        </div>
                     </p:column>
                       
                 </p:dataTable>
@@ -81,7 +82,7 @@
 
         .form-container {
             width: 100%;
-            max-width: 900px; /* Ajusta a largura do card */
+            max-width: 1500px; /* Aumentando a largura do card */
             padding: 20px;
             background-color: white;
             border-radius: 10px;
@@ -95,15 +96,27 @@
 
         .p-panel {
             border-radius: 8px;
+            padding: 20px; /* Adicionando um pouco de padding ao redor do conteúdo */
         }
 
         .button-spacing {
-            margin-top: 20px;
+            margin-top: 10px;
             text-align: center;
         }
 
         .table-responsive {
             overflow-x: auto;
+        }
+
+        /* Ajustes para o espaçamento dos botões */
+        .button-actions {
+            display: flex;
+            justify-content: space-between; /* Espaça os botões entre si */
+            gap: 10px; /* Garante que os botões tenham um espaçamento adequado */
+        }
+
+        .action-button {
+            margin-top: 5px;
         }
     </style>
 </h:body>
