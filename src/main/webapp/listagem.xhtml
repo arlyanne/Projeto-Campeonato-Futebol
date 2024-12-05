@@ -13,7 +13,7 @@
     <h:form id="form">
         <div class="form-container">
             <p:panel header="Listagem de Jogos">
-                <!-- Mensagens de erro ou sucesso -->
+                
                 <p:messages id="messages" showDetail="true" closable="true"/>
                 
                 <p:dataTable value="#{jogoBean.listaJogos}" var="jogo"
@@ -82,7 +82,7 @@
 
         .form-container {
             width: 100%;
-            max-width: 1500px; /* Aumentando a largura do card */
+            max-width: 1500px;
             padding: 20px;
             background-color: white;
             border-radius: 10px;
@@ -96,7 +96,7 @@
 
         .p-panel {
             border-radius: 8px;
-            padding: 20px; /* Adicionando um pouco de padding ao redor do conteúdo */
+            padding: 20px;
         }
 
         .button-spacing {
@@ -108,11 +108,11 @@
             overflow-x: auto;
         }
 
-        /* Ajustes para o espaçamento dos botões */
+        
         .button-actions {
             display: flex;
-            justify-content: space-between; /* Espaça os botões entre si */
-            gap: 10px; /* Garante que os botões tenham um espaçamento adequado */
+            justify-content: space-between;
+            gap: 10px; 
         }
 
         .action-button {
