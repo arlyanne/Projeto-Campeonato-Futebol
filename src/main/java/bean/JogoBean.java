@@ -54,7 +54,11 @@ public class JogoBean {
             jogo.setDataCadastro(new Date());
             
             // Salva o jogo no banco de dados
+            if(jogo.getId() != null) {
+            	JogoDao.edit(jogo);
+            }else {
             JogoDao.save(jogo);
+            }
             
             // Exibe uma mensagem de sucesso
             FacesContext.getCurrentInstance().addMessage(null, 

@@ -10,14 +10,15 @@
 </h:head>
 
 <h:body>
-    <h:form>
+    <h:form id="form">
         <div class="form-container">
             <p:panel header="Listagem de Jogos">
-                <p:messages id="messages" showDetail="true" closable="true"/>
+                 <!-- Mensagens de erro ou sucesso -->
+                 <p:messages id="messages" showDetail="true" closable="true"/>
                 
                 <p:dataTable value="#{jogoBean.listaJogos}" var="jogo"
                              emptyMessage="Nenhum jogo cadastrado"
-                             paginator="true" rows="10" styleClass="table-responsive">
+                             paginator="true" rows="10" styleClass="table-responsive" id="listagemJogos">
                     
                     <p:column headerText="Times">
                         <h:outputText value="#{jogo.time1} x #{jogo.time2}"/>
@@ -44,20 +45,25 @@
                     </p:column>
                     
                     <p:column headerText="Ações">
-        				<p:commandButton value="Editar" icon="ui-icon-pencil" 
-                         	action="#{jogoBean.editarJogo(jogo)}" 
-                         	styleClass="button-spacing"
-                        />                         
-        				<p:commandButton value="Excluir" icon="ui-icon-trash" 
-                         	action="#{jogoBean.excluirJogo(jogo)}" 
-                         	styleClass="button-spacing"
-                        />
-    				</p:column>
+                        <!-- Botão Editar -->
+                        <p:commandButton value="Editar" icon="ui-icon-pencil" 
+                                         action="#{jogoBean.editarJogo(jogo)}" 
+                                         styleClass="button-spacing"
+                                         update="form:messages form:listagemJogos" 
+                                         process="@this" />
+                        
+                        <!-- Botão Excluir -->
+                        <p:commandButton value="Excluir" icon="ui-icon-trash" 
+                                         action="#{jogoBean.excluirJogo(jogo)}" 
+                                         styleClass="button-spacing"
+                                         update="form:messages form:listagemJogos" 
+                                         process="@this" />
+                    </p:column>
                       
                 </p:dataTable>
                 
                 <div class="button-spacing">
-                    <p:commandButton value="Novo Jogo" outcome="cadastro_jogo"/>
+                    <p:linkButton value="Novo Jogo" outcome="cadastro_jogo.xhtml" style="margin-left: 10px;" />
                 </div>
             </p:panel>
         </div>
@@ -89,6 +95,15 @@
 
         .p-panel {
             border-radius: 8px;
+        }
+
+        .button-spacing {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
         }
     </style>
 </h:body>
