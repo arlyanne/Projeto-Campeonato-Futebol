@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Login</title>
+</h:head>
+<h:body>
+    <h:form id="formLogin">
+    		<p:messages id="messages" showDetail="true" closable="true">
+			<p:autoUpdate/>
+		</p:messages>
+    <p:panel header="Login" styleClass="panelLogin">
+        <h:outputLabel for="login" value="Usuário:" />
+        <p:inputText id="login" value="#{usuarioBean.usuario.login}" />
+
+        <h:outputLabel for="senha" value="Senha:" />
+        <p:password id="senha" value="#{usuarioBean.usuario.senha}" />
+
+        <p:commandButton value="Entrar" action="#{usuarioBean.autenticar}" ajax="true" />
+    </p:panel>
+    <h:messages id="messagesGlobal" globalOnly="true" />
+</h:form>
+
+<style>
+.panelLogin {
+		text-align: center;
+        margin: 50px auto;
+        width: 40%;
+        border-radius: 10px;
+        background-color: #f5f5f5;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.panelLogin label,
+.panelLogin input {
+    display: block;
+    margin: 10px auto;
+}
+</style>
+</h:body>
+</html>

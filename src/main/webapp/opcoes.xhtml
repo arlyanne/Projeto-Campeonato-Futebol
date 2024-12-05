@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Opções</title>
+</h:head>
+<h:body>
+    <h:form id="formOpcoes">
+
+        <p:panel header="Tela Opções" styleClass="panelOpcoes">
+            <h:outputLabel value="Bem-vindo" styleClass="welcomeMessage" />
+
+            <h:panelGrid columns="1" styleClass="opcoesGrid">
+            	<p:linkButton icon="pi pi-sign-in" value="Login" outcome="login.xhtml" styleClass="opcaoButton"></p:linkButton>
+             	<p:linkButton icon="pi pi-user-plus" value="Cadastro Campeonato" outcome="cadastro_campeonato.xhtml" styleClass="opcaoButton"></p:linkButton>   
+				<p:linkButton icon="pi pi-user-plus" value="Cadastro Jogo" outcome="cadastro_jogo.xhtml" styleClass="opcaoButton"></p:linkButton> 
+            </h:panelGrid>
+        </p:panel>
+    </h:form>
+
+    <style>
+     	/* Estilo para o painel centralizado */
+        .panelOpcoes {
+            text-align: center;
+            margin: 50px auto;
+            width: 40%;
+            border-radius: 10px;
+            background-color: #f5f5f5;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .panelOpcoes label,
+        .panelOpcoes input {
+            display: block;
+            margin: 10px auto;
+        }
+
+        /* Estilo para a mensagem de boas-vindas */
+        .welcomeMessage {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Estilo para a grid de opções */
+        .opcoesGrid {
+            display: flex;
+            justify-content: center; /* Centraliza o botão dentro do grid */
+            align-items: center; /* Garante que o botão fique verticalmente centralizado */
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        /* Estilo para os botões */
+        .opcaoButton {
+            display: block;
+            margin: 10px auto;
+            width: 80%;
+            padding: 5px;
+            font-size: 20px; 
+            text-align: center;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            width: 100%; 
+        }
+
+        /* Hover para os botões */
+        .opcaoButton:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .opcaoButton:active {
+            transform: translateY(1px);
+        }
+
+        /* Estilo para o menu */
+        .ui-menu {
+            font-size: 16px;
+            margin-top: 30px;
+        }
+
+        .ui-menuitem-link {
+            font-weight: bold;
+            text-decoration: none;
+            color: #4CAF50;
+            padding: 10px 15px;
+            display: block;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .ui-menuitem-link:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</h:body>
+</html>

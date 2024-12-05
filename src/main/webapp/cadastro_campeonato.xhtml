@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Cadastro-Campeonato</title>
+</h:head>
+<h:body>
+    <!-- Formulário de cadastro de Campeonato -->
+    <h:form id="formCadCampeonato" styleClass="formContainer">
+        <h3 class="formTitle">Cadastro Campeonato</h3>
+        
+        <!-- Campo para Nome do Campeonato -->
+        <div class="formGroup">
+            <h:outputLabel for="name" value="Nome do Campeonato:" styleClass="formLabel" />
+            <h:inputText id="name" value="#{campeonatoBean.campeonato.name}" required="true" styleClass="formInput" />
+        </div>
+        
+        <!-- Botões de Ação -->
+        <div class="buttonGroup">
+        <p:linkButton value="Voltar" outcome="opcoes.xhtml" styleClass="actionButton backButton" update="formCadCampeonato"></p:linkButton> 
+            <p:commandButton value="Salvar" action="#{campeonatoBean.save()}" styleClass="actionButton saveButton" update="formCadCampeonato" />
+            
+        </div>
+        
+        <!-- Lista de Campeonatos -->
+        <h:panelGrid columns="1" styleClass="tableContainer">
+            <h:outputText value="Campeonatos Cadastrados:" styleClass="tableTitle" />
+            <p:dataTable value="#{campeonatoBean.campeonatos}" var="campeonato" styleClass="dataTable">
+                <p:column headerText="Nome">
+                    <h:outputText value="#{campeonato.name}" />
+                </p:column>
+               <!-- 
+               		<p:column>
+                    <p:commandButton value="Editar" action="#{campeonatoBean.edit(campeonato)}" 
+                                     styleClass="tableButton editButton" update="formCadCampeonato" />
+                    <p:commandButton value="Excluir" action="#{campeonatoBean.delete(campeonato)}" 
+                                     styleClass="tableButton deleteButton" update="formCadCampeonato" />
+                </p:column>
+                --> 
+            </p:dataTable>
+        </h:panelGrid>
+    </h:form>
+
+    <style>
+        /* Estilo geral para o container do formulário */
+        .formContainer {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+        }
+
+        /* Título do formulário */
+        .formTitle {
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Grupo de formulário */
+        .formGroup {
+            margin-bottom: 15px;
+        }
+
+        .formLabel {
+            display: block;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .formInput {
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Grupo de botões */
+        .buttonGroup {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; 
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .actionButton {
+            flex: 1;
+            padding: 8px 12px;
+            margin: 0 5px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .saveButton {
+            background-color: #4CAF50;
+        }
+        
+        .backButton {
+        	background-color: #FF5E5E;
+        	padding: 5px 20px;
+        }
+
+        .saveButton:hover {
+            background-color: #45a049;
+        }
+
+        /* Container da tabela */
+        .tableContainer {
+            margin-top: 30px;
+        }
+
+        .tableTitle {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        /* Tabela */
+        .dataTable {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .dataTable th,
+        .dataTable td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+
+        .tableButton {
+            padding: 5px 10px;
+            font-size: 12px;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .tableButton.editButton {
+            background-color: #2196F3;
+        }
+
+        .tableButton.editButton:hover {
+            background-color: #1e88e5;
+        }
+
+        .tableButton.deleteButton {
+            background-color: #f44336;
+        }
+
+        .tableButton.deleteButton:hover {
+            background-color: #e53935;
+        }
+    </style>
+</h:body>
+</html>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Listagem de Jogos</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <div class="form-container">
+            <p:panel header="Listagem de Jogos">
+                <p:messages id="messages" showDetail="true" closable="true"/>
+                
+                <p:dataTable value="#{jogoBean.listaJogos}" var="jogo"
+                             emptyMessage="Nenhum jogo cadastrado"
+                             paginator="true" rows="10" styleClass="table-responsive">
+                    
+                    <p:column headerText="Times">
+                        <h:outputText value="#{jogo.time1} x #{jogo.time2}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Placar">
+                        <h:outputText value="#{jogo.golsTime1} x #{jogo.golsTime2}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Data da Partida">
+                        <h:outputText value="#{jogo.dataPartida}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+                        </h:outputText>
+                    </p:column>
+                    
+                    <p:column headerText="Campeonato">
+                        <h:outputText value="#{jogo.campeonato.name}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Data de Cadastro">
+                        <h:outputText value="#{jogo.dataCadastro}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+                        </h:outputText>
+                    </p:column>
+                    
+                    <p:column headerText="Ações">
+        				<p:commandButton value="Editar" icon="ui-icon-pencil" 
+                         	action="#{jogoBean.editarJogo(jogo)}" 
+                         	styleClass="button-spacing"
+                        />                         
+        				<p:commandButton value="Excluir" icon="ui-icon-trash" 
+                         	action="#{jogoBean.excluirJogo(jogo)}" 
+                         	styleClass="button-spacing"
+                        />
+    				</p:column>
+                      
+                </p:dataTable>
+                
+                <div class="button-spacing">
+                    <p:commandButton value="Novo Jogo" outcome="cadastro_jogo"/>
+                </div>
+            </p:panel>
+        </div>
+    </h:form>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 900px; /* Ajusta a largura do card */
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .p-panel {
+            border-radius: 8px;
+        }
+    </style>
+</h:body>
+</html>
